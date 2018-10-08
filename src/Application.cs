@@ -2,6 +2,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
+/**
+ * Takes as a first argument a name of an executive and prints out which users work under
+ * him and what their departments, salaries and roles are.
+ *
+ * It collects data from several tables, correlates different user types by name and fills in 
+ * the blanks if a user has missing information on a table.
+ * Students don't get a salary even if they have other roles with values in their salary 
+ * field.
+ *
+ * Read the codebase and understand it.
+ *
+ * Things to think about:
+ * - Is this good code?
+ * - Is the output of the application suited for an executive tool?
+ * - How would you test this code?
+ * - Is the code intuitive?
+ * - Are there things that should be refactored?
+ * - Are there error cases that must be dealt with?
+ *
+ */
 namespace digispace.recruiting.interview
 {
     public class Application
