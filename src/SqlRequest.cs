@@ -16,26 +16,26 @@ namespace digispace.recruiting.interview
                 + this.connstrg + "!");
         }
 
-        public Application.Users Execute(string sql)
+        public Application.Users Execute<T>(string sql)
         {
 
             Application app = new Application();
 
-            if (type.Equals(Application.TYPE_ONE)) {
+            if (type.Equals(app.TYPE_ONE)) {
                 sql = sql + "WHERE role = Manager";
                 Trace.WriteLine("LOG: SELECTING " + sql);
             } 
-            else if (type.Equals(Application.TYPE_TWO)) 
+            else if (type.Equals(app.TYPE_TWO)) 
             {
                 sql = sql + " AND role = Tester";
                 Trace.WriteLine("LOG: SELECTING " + sql);
             } 
-            else if (type.Equals(Application.TYPE_TRE)) 
+            else if (type.Equals(app.TYPE_TRE)) 
             {
                 sql = sql + " AND role = Dev";
                 Trace.WriteLine("LOG: SELECTING " + sql);
             } 
-            else if (type.Equals(Application.TYPE_FUR)) 
+            else if (type.Equals(app.TYPE_FUR)) 
             {
                 sql = sql + " AND role = Student";
                 Trace.WriteLine("LOG: SELECTING " + sql);
@@ -52,7 +52,7 @@ namespace digispace.recruiting.interview
             //
             ///////////////////////////////////////////////////////////////////////////////////////////
 
-            return OutOfScopeSqlMock.Execute(type, sql);
+            return OutOfScopeSqlMock.Execute<T>(type, sql);
         }
     }
 }

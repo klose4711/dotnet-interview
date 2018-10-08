@@ -61,28 +61,28 @@ namespace digispace.recruiting.interview
             new Application().runLogic(args[0]);
         }
 
-        public const string TYPE_ONE = "1";
-        public const string TYPE_TWO = "2";
-        public const string TYPE_TRE = "3";
-        public const string TYPE_FUR = "4";
+        public readonly string TYPE_ONE = "1";
+        public readonly string TYPE_TWO = "2";
+        public readonly string TYPE_TRE = "3";
+        public readonly string TYPE_FUR = "4";
 
         public void runLogic(string executive) 
         {
             string sql = "Select name, birth, dept FROM users WHERE  supervisor='"
                 + executive + "';";
             Users mgrs = new SqlRequest("sql://users.db/users", TYPE_ONE)
-                    .Execute(sql);
+                    .Execute<Users>(sql);
 
             foreach (User mgr in mgrs) 
             {
                 Where where = new Where();
                 addWhereFilter(where, mgr);
                 Users testers = new SqlRequest("sql://users.db/users", TYPE_TWO)
-                        .Execute("Select name, birth, dept FROM users" + where.where);
+                        .Execute<Users>("Select name, birth, dept FROM users" + where.where);
                 Users devs = new SqlRequest("sql://users.db/users", TYPE_TRE)
-                        .Execute("Select name, birth, dept FROM users" + where.where);
+                        .Execute<Users>("Select name, birth, dept FROM users" + where.where);
                 Users students = new SqlRequest("sql://users.db/users", TYPE_FUR)
-                        .Execute("Select name, birth, dept FROM users" + where.where);
+                        .Execute<Users>("Select name, birth, dept FROM users" + where.where);
 
                 Trace.WriteLine("");
                 Trace.WriteLine("");
@@ -100,7 +100,7 @@ namespace digispace.recruiting.interview
                 foreach (User p in devs) 
                 {
                     p.role = "Developer";
-                    User existing = persons[p.name];
+                    User existing = persons.GetValueOrDefault(p.name);
                     if (existing == null) 
                     {
                         persons.Add(p.name, p);
@@ -113,7 +113,7 @@ namespace digispace.recruiting.interview
                 foreach(User p in students) 
                 {
                     p.role = "Student";
-                    User existing = persons[p.name];
+                    User existing = persons.GetValueOrDefault(p.name);
                     if (existing == null) 
                     {
                         persons.Add(p.name, p);
@@ -122,7 +122,7 @@ namespace digispace.recruiting.interview
                     {
                         mergeUser(p, existing);
                     }
-                    existing = persons[p.name];
+                    existing = persons.GetValueOrDefault(p.name);
                     existing.salary = 0;
                 }
                 Trace.WriteLine("");
@@ -130,7 +130,7 @@ namespace digispace.recruiting.interview
 
                 foreach (User p in persons.Values) 
                 {              
-                    Regex rx = new Regex(@"\w*" + mgr.department + @"\w*");
+                    Regex rx = new Regex(@".*" + mgr.department + @".*");
 
                     if (rx.IsMatch(p.department))
                         Trace.WriteLine(p);
