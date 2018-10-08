@@ -49,7 +49,7 @@ namespace digispace.recruiting.interview
             }
         }
 
-        public class Users : System.Collections.Generic.List<User> {};
+        public class Users : List<User> {};
 
         class Where 
         {
