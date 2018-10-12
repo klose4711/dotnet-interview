@@ -154,7 +154,7 @@ namespace digispace.recruiting.interview
         // Merges information from User one into user two
         private void mergeUser(User one, User two) 
         {
-            Trace.WriteLine("LOG: Merging: " + one + " into: " + two + " ");
+            Console.WriteLine("LOG: Merging: " + one + " into: " + two + " ");
 
             two.name = one.name == null ? two.name : one.name;
             two.birth = one.birth == null ? two.birth : one.birth;
