@@ -13,7 +13,7 @@ This project is a .net core 2.1 console application.
 
 To build and run this project, you can choose one of the following options:
 
-A. Open this folder Visual Studio Code
+A. Open this folder in Visual Studio Code
 B. Use the CLI: dotnet build && dotnet run
 
 The corresponding .csproj file can be found in the root folder.
