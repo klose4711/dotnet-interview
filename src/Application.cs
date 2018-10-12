@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -84,10 +85,10 @@ namespace digispace.recruiting.interview
                 Users students = new SqlRequest("sql://users.db/users", TYPE_FUR)
                         .Execute<Users>("Select name, birth, dept FROM users" + where.where);
 
-                Trace.WriteLine("");
-                Trace.WriteLine("");
-                Trace.WriteLine("");
-                Trace.WriteLine(
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine(
                         "Manager " + mgr.name + " " + mgr.salary + " ("
                             + mgr.department + ")  manages:");
 
@@ -125,21 +126,21 @@ namespace digispace.recruiting.interview
                     existing = persons.GetValueOrDefault(p.name);
                     existing.salary = 0;
                 }
-                Trace.WriteLine("");
-                Trace.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
 
                 foreach (User p in persons.Values) 
                 {              
                     Regex rx = new Regex(@".*" + mgr.department + @".*");
 
                     if (rx.IsMatch(p.department))
-                        Trace.WriteLine(p);
+                        Console.WriteLine(p);
                 }
 
-                Trace.WriteLine("");
-                Trace.WriteLine("");
-                Trace.WriteLine("");
-                Trace.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
             }
         }
 

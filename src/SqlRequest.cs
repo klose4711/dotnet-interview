@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 
 namespace digispace.recruiting.interview
@@ -12,7 +13,7 @@ namespace digispace.recruiting.interview
         {
             this.connstrg = connstrg;
             this.type = type;
-            Trace.WriteLine("LOG: Created a connection to DB "
+            Console.WriteLine("LOG: Created a connection to DB "
                 + this.connstrg + "!");
         }
 
@@ -23,22 +24,22 @@ namespace digispace.recruiting.interview
 
             if (type.Equals(app.TYPE_ONE)) {
                 sql = sql + "WHERE role = Manager";
-                Trace.WriteLine("LOG: SELECTING " + sql);
+                Console.WriteLine("LOG: SELECTING " + sql);
             } 
             else if (type.Equals(app.TYPE_TWO)) 
             {
                 sql = sql + " AND role = Tester";
-                Trace.WriteLine("LOG: SELECTING " + sql);
+                Console.WriteLine("LOG: SELECTING " + sql);
             } 
             else if (type.Equals(app.TYPE_TRE)) 
             {
                 sql = sql + " AND role = Dev";
-                Trace.WriteLine("LOG: SELECTING " + sql);
+                Console.WriteLine("LOG: SELECTING " + sql);
             } 
             else if (type.Equals(app.TYPE_FUR)) 
             {
                 sql = sql + " AND role = Student";
-                Trace.WriteLine("LOG: SELECTING " + sql);
+                Console.WriteLine("LOG: SELECTING " + sql);
             }
 
             ///////////////////////////////////////////////////////////////////////////////////////////
