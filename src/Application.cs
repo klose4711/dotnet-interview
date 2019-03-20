@@ -4,24 +4,31 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 /**
- * Takes as a first argument a name of an executive and prints out which users work under
- * him and what their departments, salaries and roles are.
+ * Takes as a first argument a name of an executive and prints out which users 
+ * work under him and what their departments, salaries and roles are.
  *
- * It collects data from several tables, correlates different user types by name and fills in 
- * the blanks if a user has missing information on a table.
- * Students don't get a salary even if they have other roles with values in their salary 
- * field.
+ * It collects data from several tables, correlates different user types by 
+ * name and fills in the blanks if a user has missing information on a table.
+ * Students don't get a salary even if they have other roles with values in 
+ * their salary field. That is company policy and not negotiable.
+ * 
+ * Note:
+ * This application is supposed to be a reporting type application. This means
+ * that it doesn't concern itself with putting data into the database. It just 
+ * reads it out and corrects inconsistencies (if needed) after the reads.
  *
- * Read the codebase and understand it.
- *
- * Things to think about:
- * - Is this good code?
- * - Is the output of the application suited for an executive tool?
- * - How would you test this code?
- * - Is the code intuitive?
- * - Are there things that should be refactored?
- * - Are there error cases that must be dealt with?
- *
+ * Assignment:
+ * 1. Read the codebase and understand.
+ * 2. Things to think about:
+ *    - Is this good code?
+ *    - Is the output of the application suited for an executive tool?
+ *    - How would you test this code?
+ *    - Is the code intuitive?
+ *    - Are there things that should be refactored to make the code more 
+ *      understandable?
+ *    - Are there things that should be refactored to make it easier to write
+ *      unit tests focusing on only one part of the logic?
+ *    - Are there error cases that must be dealt with?
  */
 namespace digispace.recruiting.interview
 {
