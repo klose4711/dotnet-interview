@@ -1,4 +1,4 @@
-# Java App Refactoring 🚀
+# .NET Core Console App Refactoring 🚀
 
 Your task today:
 
